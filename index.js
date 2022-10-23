@@ -84,36 +84,10 @@ function generatepath(y){
     return(path);
 }
 
-function resolveCollitions(bubble_id){
-    var incoming = document.querySelector('#'+bubble_id).getBoundingClientRect();
-    var incomingcenter =[(incoming.right - 150) , (incoming.bottom - 150)];
-
-    bubbles.forEach( (bubble_data) =>{
-        if(bubble_data['id'] !== bubble_id){
-
-            var test = document.querySelector('#'+bubble_data['id']).getBoundingClientRect();
-            var testCenter =  [(test.right -150 ) , (test.bottom - 150 )]; 
-    
-            if( incomingcenter[0] >= testCenter[0]-150 && incomingcenter[0] <= testCenter[0]+150 && 
-                incomingcenter[1] >= testCenter[1]-150 && incomingcenter[1] <= testCenter[1]+150){
-                    
-                var direction = document.querySelector('#'+bubble_data['id']).getAttribute('current_direction');
-                if(direction == 'right'){
-                    document.querySelector('#'+bubble_data['id']).setAttribute('current_direction','left');
-                }else{
-                    document.querySelector('#'+bubble_data['id']).setAttribute('current_direction','right');
-                }
-            }
-            
-        }
-        
-    });
-}
 
 function animate_bubble(bubbleID){
 
-    //resolveCollitions(bubbleID);
-    
+   
     var bubbleElement = document.querySelector('#'+bubbleID);
     var boundingRect = bubbleElement.getBoundingClientRect();
     var moves_count = bubbleElement.getAttribute("moves_count");

@@ -9,7 +9,7 @@ You can touch or click each fact to learn what it represents. Seer also reveals 
 
 Because Open Access Week 2022 has the theme of Open for Climate Justice we’ve included most of the facts in Seer to emphasize environmental issues. Yet we don’t want you to leave satisfied with a handful of facts–some require more inquiry and your critical eye. 
 
-If you want to see **Seer** in action you can check it out here (USe full screen mode for a better experience): https://library.concordia.ca/apps/seer/index.html
+If you want to see **Seer** in action you can check it out here (Use full screen mode for a better experience): https://library.concordia.ca/apps/seer/index.html
 
 
 
