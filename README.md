@@ -44,5 +44,6 @@ To learn more about your rights from Creative Commons licences, visit https://cr
 - Jingjing Li 
 - Miranda Monosky 
 
-Reference sources and fact content available from the Zotero group here: 
-https://www.zotero.org/groups/4706099/seer_project_-_oa_in_our_lives 
+The Seer question and fact content is licensed under a [Creative Commons Attribution licence (CC BY)](https://creativecommons.org/licenses/by/4.0/). Both the content and reference sources are available from the [Zotero group](https://www.zotero.org/groups/4706099/seer_project_-_oa_in_our_lives).  
+
+
