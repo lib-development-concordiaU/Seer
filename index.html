@@ -12,7 +12,7 @@
     <div id="main"></div>
 
     <video autoplay muted loop id="bgvideo">
-      <source src="Assets/bg.mp4" type="video/mp4" />
+      <source src="Assets/bg.webm" type="video/webm" />
     </video>
 
     <template id="bubble-template">
@@ -99,7 +99,16 @@
       >
         Will I get COVID ?
       </div>
-      <img id="bg" src="Assets/bg-portal.gif" width="100%" class="bubble-bg" />
+      <video
+        id="bg"
+        src="Assets/bg-portal.webm"
+        type="video/webm"
+        width="100%"
+        class="bubble-bg"
+        autoplay
+        muted
+        loop
+      ></video>
     </template>
     <script>
       init();
