@@ -1,80 +1,107 @@
 <html>
-    <head>
-        <style>
-            @import url("https://use.typekit.net/mrn3qkc.css");
-          </style>
-        <link rel="stylesheet" href="styles.css" / >
-        <script src="index.js" ></script>
-    </head>
+  <head>
+    <style>
+      @import url("https://use.typekit.net/mrn3qkc.css");
+    </style>
+    <link rel="stylesheet" href="styles.css" / >
+    <script src="index.js"></script>
+  </head>
 
-    <body onclick="console.log('outclick')">
-        <div id="main" >
+  <body onclick="console.log('outclick')">
+    <div id="main"></div>
 
+    <video autoplay muted loop id="bgvideo">
+      <source src="Assets/bg.mp4" type="video/mp4" />
+    </video>
+
+    <template id="bubble-template">
+      <div
+        id="bubble-id"
+        class="question level1"
+        stop_animation="false"
+        speed="1"
+        current_direction="right"
+        rotation="45"
+        moves_count="0"
+      >
+        <div id="open-question" class="open-question hidden">
+          <div id="detail-fact" class="detail-fact hidden">
+            <div
+              id="close-detail-btn"
+              class="close_detail"
+              onclick="close_detail('bubble01','detail-fact')"
+            >
+              <span class="close_btn">X</span>
+            </div>
+            <div class="detail-info">
+              <span id="number">44</span><br />
+              <span id="text" class="detail-text"
+                >this is a sample with a longer text</span
+              ><br />
+              <span id="rights" class="detail-rights-text"
+                >this is a sample with a longer text</span
+              ><br />
+              <img
+                id="qr-code"
+                src="Assets/qr_codes/06336077-b259-7b5b-8000-289e491cf34e.png"
+                class="qr-code"
+              />
+              <span id="citation" class="detail-citation-text"
+                >this is a sample with a longer text</span
+              ><br />
+            </div>
+            <img
+              id="open-detail-bg"
+              src="Assets/bubble-bg.png"
+              width="100%"
+              class="detail-bg"
+            />
+          </div>
+
+          <div id="close-grid-btn"" class="close_layer"
+          onclick="close_question('bubble01')"">
+          <span class="close_btn">X</span>
         </div>
 
-        <video autoplay muted loop id="bgvideo">
-            <source src="Assets/bg.mp4" type="video/mp4">
-        </video>
-        
-       <template id="bubble-template">
-            <div id="bubble-id" class="question level1" stop_animation="false" speed="1" current_direction="right" rotation="45" moves_count="0">
-                <div id="open-question" class="open-question hidden" >
-                    
-                    <div id="detail-fact" class="detail-fact hidden">
-                        <div id="close-detail-btn" class="close_detail" onclick="close_detail('bubble01','detail-fact')">
-                            <span class="close_btn">X</span>
-                        </div>
-                        <div class="detail-info">
-                            <span id="number">44</span><br/>
-                            <span id="text" class="detail-text">this is a sample with a longer text</span><br />
-                            <span id="rights" class="detail-rights-text">this is a sample with a longer text</span><br />
-                            <img id="qr-code" src="Assets/qr_codes/06336077-b259-7b5b-8000-289e491cf34e.png" class="qr-code" />  
-                            <span id="citation" class="detail-citation-text">this is a sample with a longer text</span><br />
-                        </div>
-                        <img id="open-detail-bg" src="Assets/bubble-bg.png" width="100%" class="detail-bg" />     
-                    </div>
-                    
-                    
-                    <div id="close-grid-btn"" class="close_layer" onclick="close_question('bubble01')"">
-                        <span class="close_btn">X</span>
-                    </div>
-
-                    <div id="open-question-grid" class="open-question-grid" >
-                        <div id="fact1" class="open-question-fact" onclick="">
-                            <span id="number" class="open-question-number"></span>
-                            <span id="text" class="open-question-text"></span>
-                        </div>
-                        <div id="fact2" class="open-question-fact" onclick="">
-                            <span id="number" class="open-question-number"></span>
-                            <span id="text" class="open-question-text"></span>
-                        </div>
-                        <div id="fact3" class="open-question-fact" onclick="">
-                            <span id="number" class="open-question-number"></span>
-                            <span id="text" class="open-question-text"></span>
-                        </div>
-                        <div id="fact4" class="open-question-fact" onclick="">
-                            <span id="number" class="open-question-number"></span>
-                            <span id="text" class="open-question-text"></span>
-                        </div>
-                        <div id="fact5" class="open-question-fact" onclick="">
-                            <span id="number" class="open-question-number"></span>
-                            <span id="text" class="open-question-text"></span>
-                        </div>
-                        <div id="fact6" class="open-question-fact" onclick="">
-                            <span id="number" class="open-question-number"></span>
-                            <span id="text" class="open-question-text"></span>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="question-text" onclick="open_question('bubble01')" class="question-text">Will I get COVID ?</div>     
-                <img id="bg" src="Assets/bg-portal.gif" width="100%" class="bubble-bg" >
+        <div id="open-question-grid" class="open-question-grid">
+          <div id="fact1" class="open-question-fact" onclick="">
+            <span id="number" class="open-question-number"></span>
+            <span id="text" class="open-question-text"></span>
+          </div>
+          <div id="fact2" class="open-question-fact" onclick="">
+            <span id="number" class="open-question-number"></span>
+            <span id="text" class="open-question-text"></span>
+          </div>
+          <div id="fact3" class="open-question-fact" onclick="">
+            <span id="number" class="open-question-number"></span>
+            <span id="text" class="open-question-text"></span>
+          </div>
+          <div id="fact4" class="open-question-fact" onclick="">
+            <span id="number" class="open-question-number"></span>
+            <span id="text" class="open-question-text"></span>
+          </div>
+          <div id="fact5" class="open-question-fact" onclick="">
+            <span id="number" class="open-question-number"></span>
+            <span id="text" class="open-question-text"></span>
+          </div>
+          <div id="fact6" class="open-question-fact" onclick="">
+            <span id="number" class="open-question-number"></span>
+            <span id="text" class="open-question-text"></span>
+          </div>
         </div>
-       </template> 
-       
-      <script>
-        init();
-      </script>
-    </body>
+      </div>
 
+      <div
+        id="question-text"
+        onclick="open_question('bubble01')"
+        class="question-text"
+      >
+        Will I get COVID ?
+      </div>
+      <img id="bg" src="Assets/bg-portal.gif" width="100%" class="bubble-bg" />
+    </template>
+    <script>
+      init();
+    </script>
+  </body>
 </html>
