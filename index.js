@@ -1,6 +1,6 @@
 function open_question(bubbleID){
 
-        var bubbleElement = document.querySelector('#'+bubbleID);
+        let bubbleElement = document.querySelector('#'+bubbleID);
         bubbleElement.setAttribute('stop_animation','true');
         bubbleElement.classList.add('smooth');
         bubbleElement.classList.add('opened-question');
@@ -10,7 +10,7 @@ function open_question(bubbleID){
         //move_to_center(bubbleElement);
 
         setTimeout(()=>{
-            var open_question = bubbleElement.querySelector('#open-question');
+            let open_question = bubbleElement.querySelector('#open-question');
             open_question.classList.add('show');
             open_question.classList.remove('hidden');           
         },1000);
@@ -24,11 +24,11 @@ function open_question(bubbleID){
 
 
 function close_question(bubbleID){    
-    var bubbleElement = document.querySelector('#'+bubbleID);
+    let bubbleElement = document.querySelector('#'+bubbleID);
     bubbleElement.setAttribute('stop_animation','false');
     bubbleElement.classList.remove('opened-question');
     
-    var open_question = bubbleElement.querySelector('#open-question');
+    let open_question = bubbleElement.querySelector('#open-question');
     open_question.classList.remove('show');
     open_question.classList.add('hidden');
 
@@ -41,8 +41,8 @@ function close_question(bubbleID){
 }
 
 function open_detail(bubbleID,factID){
-    var bubbleElement = document.querySelector('#'+bubbleID);
-    var detailElement = bubbleElement.querySelector('#detail-fact');
+    let bubbleElement = document.querySelector('#'+bubbleID);
+    let detailElement = bubbleElement.querySelector('#detail-fact');
 
     const fact = getFact(factID);
 
@@ -63,8 +63,8 @@ function open_detail(bubbleID,factID){
 
 
 function close_detail(bubbleID){
-    var bubbleElement = document.querySelector('#'+bubbleID);
-    var detailElement = bubbleElement.querySelector('#detail-fact');
+    let bubbleElement = document.querySelector('#'+bubbleID);
+    let detailElement = bubbleElement.querySelector('#detail-fact');
     
     detailElement.classList.remove('show');
     setTimeout( ()=>{
@@ -76,9 +76,9 @@ function close_detail(bubbleID){
 
 
 function generatepath(y){
-    var path = [];
-    for(i = 0; i < 10000; i++){
-        var new_y = Math.floor( Math.sin(i/360)*100 ) + y;
+    let path = [];
+    for(let i = 0; i < 10000; i++){
+        let new_y = Math.floor( Math.sin(i/360)*100 ) + y;
         path[i] = new_y;
     }
     return(path);
@@ -88,21 +88,21 @@ function generatepath(y){
 function animate_bubble(bubbleID){
 
    
-    var bubbleElement = document.querySelector('#'+bubbleID);
-    var boundingRect = bubbleElement.getBoundingClientRect();
-    var moves_count = bubbleElement.getAttribute("moves_count");
+    let bubbleElement = document.querySelector('#'+bubbleID);
+    let boundingRect = bubbleElement.getBoundingClientRect();
+    let moves_count = bubbleElement.getAttribute("moves_count");
     
-    var x = boundingRect.x;
-    var y = boundingRect.y;
+    let x = boundingRect.x;
+    let y = boundingRect.y;
 
     const screen_width = screen.width;
     const screen_height = screen.height;
 
-    var direction = bubbleElement.getAttribute("current_direction");
-    var angle = bubbleElement.getAttribute("rotation");
-    var speed = bubbleElement.getAttribute("speed");
+    let direction = bubbleElement.getAttribute("current_direction");
+    let angle = bubbleElement.getAttribute("rotation");
+    let speed = bubbleElement.getAttribute("speed");
 
-    path = getAnimationPath(bubbleID);
+    let path = getAnimationPath(bubbleID);
     
     
     if(parseInt(x) == parseInt(screen_width) + 200){
@@ -174,7 +174,7 @@ function animate_bubbles() {
 }
 
 function getAnimationPath(bubble_id){
-    path = [];
+    let path = [];
     bubbles.forEach( (bubble) =>{
         if(bubble['id'] == bubble_id){
             path = bubble['path'];
@@ -192,7 +192,7 @@ function setAnimationPath(bubble_id,path){
 }
 
 function getFact(factID){
-    var returnval = [];
+    let returnval = [];
     facts.forEach( (fact) =>{
         if(fact['id'] == factID){
             returnval = fact;
@@ -218,15 +218,15 @@ function changeSpeed(bubbleElement){
     bubbleElement.setAttribute('speed',speed);
 }
 
-var bubbles = [];
-var facts = [];
+let bubbles = [];
+let facts = [];
 
 function init(){
     fetch('Data/seer.json').then( (defitions) => {
         defitions.json().then( (questions) =>{
-            var index = 0;
+            let index = 0;
             questions.forEach( (question) =>{
-                var newBubbleHTML = document.querySelector('#bubble-template').content.cloneNode(true);
+                let newBubbleHTML = document.querySelector('#bubble-template').content.cloneNode(true);
 
                 const bubble_id = 'bubble_'+index;
                 
@@ -235,9 +235,9 @@ function init(){
                 newBubbleHTML.querySelector('#close-grid-btn').setAttribute('onclick',"close_question('"+bubble_id+"')");
 
                 
-                for(var i =0; i < 6; i++){
+                for(let i =0; i < 6; i++){
                     if(question['cards'][i] !== undefined){
-                        var fact = newBubbleHTML.querySelector('#fact'+(i+1));
+                        let fact = newBubbleHTML.querySelector('#fact'+(i+1));
                         fact.setAttribute('onclick',"open_detail('"+bubble_id+"','"+question['cards'][i]['id']+"')");
                         fact.querySelector('#number').innerHTML = question['cards'][i]['number'];
                         if(parseInt(question['cards'][i]['number'].length) < 8){
@@ -253,8 +253,8 @@ function init(){
                 
                 newBubbleHTML.querySelector('#close-detail-btn').setAttribute('onclick',"close_detail('"+bubble_id+"')");
                 
-                var mainBubble = newBubbleHTML.querySelector('#bubble-id');
-                var xpos = parseInt(index)*250;
+                let mainBubble = newBubbleHTML.querySelector('#bubble-id');
+                let xpos = parseInt(index)*250;
                 mainBubble.style.left = xpos + "px";
                 mainBubble.style.top = parseInt(index)*50 + "px";
                 mainBubble.setAttribute('id',bubble_id);
@@ -263,7 +263,7 @@ function init(){
                 changeLevel(mainBubble);
                 changeSpeed(mainBubble);
 
-                var direction = Math.random();
+                let direction = Math.random();
                 if(direction <= 0.5){
                     mainBubble.setAttribute('current_direction','left');
                 }else{
@@ -274,7 +274,7 @@ function init(){
 
                 //generate initial position and animation paths
 
-                path = generatepath( parseInt(index)*50 );
+                let path = generatepath( parseInt(index)*50 );
                 const bubble = {
                     "id":'bubble_'+index,
                     "path": path
